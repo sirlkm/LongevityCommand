@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: cardiac-risk-engine
+    runtime: docker
+    plan: free
+    dockerfilePath: ./cardiac-risk-engine/Dockerfile
+    dockerContext: ./cardiac-risk-engine
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "10000"
