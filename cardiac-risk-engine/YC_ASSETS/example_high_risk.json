@@ -1,0 +1,35 @@
+{
+  "patient_profile": "High Risk \u2014 Multiple Compounding Factors",
+  "description": "57-year-old with obesity, very low HRV, chronic stress, sleep deprivation, slow recovery",
+  "input_features": {
+    "age": 57,
+    "bmi": 35,
+    "resting_hr": 90,
+    "hrv_rmssd": 22,
+    "sleep_hours": 4.5,
+    "stress_score": 9,
+    "recovery_hours": 44
+  },
+  "prediction": {
+    "risk_score": 99,
+    "risk_level": "HIGH",
+    "timeline": [
+      0.99,
+      0.99,
+      0.99,
+      0.99,
+      0.99,
+      0.99
+    ],
+    "top_risk_factors": [
+      "Low HRV (poor autonomic function)",
+      "Elevated chronic stress",
+      "Insufficient sleep",
+      "Slow recovery time",
+      "Age >50 with elevated BMI",
+      "Elevated resting heart rate",
+      "High BMI"
+    ],
+    "recommendation": "Urgent cardiac workup recommended. Immediate lifestyle intervention for modifiable risk factors."
+  }
+}

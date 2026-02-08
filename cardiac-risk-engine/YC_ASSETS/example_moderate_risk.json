@@ -1,0 +1,33 @@
+{
+  "patient_profile": "Moderate Risk \u2014 Stressed Professional",
+  "description": "52-year-old with elevated BMI, low HRV, high stress, poor sleep",
+  "input_features": {
+    "age": 52,
+    "bmi": 31,
+    "resting_hr": 84,
+    "hrv_rmssd": 30,
+    "sleep_hours": 5,
+    "stress_score": 7,
+    "recovery_hours": 38
+  },
+  "prediction": {
+    "risk_score": 25,
+    "risk_level": "MODERATE",
+    "timeline": [
+      0.2741,
+      0.2944,
+      0.3147,
+      0.335,
+      0.3553,
+      0.3756
+    ],
+    "top_risk_factors": [
+      "Low HRV (poor autonomic function)",
+      "Elevated chronic stress",
+      "Insufficient sleep",
+      "Slow recovery time",
+      "Age >50 with elevated BMI"
+    ],
+    "recommendation": "Schedule cardiac evaluation within 3 months. Focus on stress management and sleep optimization."
+  }
+}

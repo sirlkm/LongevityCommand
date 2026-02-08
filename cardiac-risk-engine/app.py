@@ -40,11 +40,11 @@ DEMO_PATIENTS = [
         },
     },
     {
-        "label": "Moderate Risk — Sedentary Professional",
+        "label": "Moderate Risk — Stressed Professional",
         "data": {
-            "age": 48, "bmi": 29, "resting_hr": 76,
-            "hrv_rmssd": 40, "sleep_hours": 6,
-            "stress_score": 6, "recovery_hours": 32,
+            "age": 52, "bmi": 31, "resting_hr": 84,
+            "hrv_rmssd": 30, "sleep_hours": 5,
+            "stress_score": 7, "recovery_hours": 38,
         },
     },
     {

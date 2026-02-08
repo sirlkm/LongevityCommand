@@ -1,0 +1,29 @@
+{
+  "patient_profile": "Low Risk \u2014 Healthy Active Adult",
+  "description": "35-year-old with excellent biometrics, good sleep, low stress",
+  "input_features": {
+    "age": 35,
+    "bmi": 23,
+    "resting_hr": 58,
+    "hrv_rmssd": 75,
+    "sleep_hours": 8,
+    "stress_score": 2,
+    "recovery_hours": 16
+  },
+  "prediction": {
+    "risk_score": 0,
+    "risk_level": "LOW",
+    "timeline": [
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0002,
+      0.0002
+    ],
+    "top_risk_factors": [
+      "No major individual risk factors identified"
+    ],
+    "recommendation": "Continue current lifestyle. Annual cardiac screening recommended."
+  }
+}

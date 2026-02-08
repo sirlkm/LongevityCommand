@@ -1,0 +1,68 @@
+================================================================================
+  CARDIAC RISK ENGINE — MODEL PERFORMANCE SUMMARY
+================================================================================
+
+MODEL ARCHITECTURE
+------------------
+Algorithm:          XGBoost (Gradient Boosted Trees)
+Trees:              300
+Max depth:          5
+Learning rate:      0.08
+Class balancing:    Automatic (scale_pos_weight)
+Feature scaling:    StandardScaler
+
+PERFORMANCE METRICS (80/20 stratified split)
+---------------------------------------------
+Accuracy:           91.5%
+ROC-AUC:            0.82
+Precision:          23.5%
+Recall:             16.0%
+
+Note on precision/recall: The 6.3% event rate creates class imbalance.
+The model optimizes for discrimination (AUC) over raw precision — correctly
+ranking patients by risk is more valuable than binary classification.
+
+TRAINING DATA
+-------------
+Records:            2,000 synthetic patients
+Event rate:         6.3% (126 cardiac events)
+Generation:         Logistic model with realistic clinical correlations
+Seed:               42 (reproducible)
+
+INPUT FEATURES (7 raw + 3 engineered = 10 total)
+--------------------------------------------------
+Raw features:
+  1. age              30–60 years
+  2. bmi              20–38 kg/m2
+  3. resting_hr       50–95 bpm
+  4. hrv_rmssd        20–90 ms
+  5. sleep_hours      4–9 hours
+  6. stress_score     1–10 scale
+  7. recovery_hours   12–48 hours
+
+Engineered features:
+  8. cardiovascular_stress  = (resting_hr x stress_score) / hrv_rmssd
+  9. recovery_risk          = recovery_hours / sleep_hours
+ 10. metabolic_load         = bmi x (11 - stress_score) / 10
+
+PREDICTION OUTPUT
+-----------------
+- Risk score:         0–100 (percentage)
+- Risk level:         LOW (<20) / MODERATE (20–49) / HIGH (50+)
+- 6-month timeline:   Month-by-month risk trajectory
+- Risk factors:       Identified concerning metrics
+- Recommendation:     Actionable clinical guidance
+
+KEY INNOVATION
+--------------
+Individual risk trajectories, not just binary classification.
+The timeline shows how a patient's risk compounds over 6 months,
+enabling early intervention before events occur.
+
+EXAMPLE OUTPUTS
+---------------
+Low risk patient:      0% → flat trajectory
+Moderate risk patient: 25% → rising from 27% to 38% over 6 months
+High risk patient:     99% → immediate intervention needed
+
+================================================================================
