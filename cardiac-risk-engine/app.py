@@ -2,11 +2,10 @@
 
 from contextlib import asynccontextmanager
 
-import joblib
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 
-from model import FEATURES, MODEL_PATH, SCALER_PATH
+from model import CardiacRiskPredictor
 
 
 class PatientInput(BaseModel):
@@ -20,19 +19,20 @@ class PatientInput(BaseModel):
 
 
 class PredictionOutput(BaseModel):
-    risk_probability: float
+    risk_score: int
     risk_level: str
+    timeline: list[float]
+    top_risk_factors: list[str]
+    recommendation: str
 
 
-_state: dict = {}
+_predictor = CardiacRiskPredictor()
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    _state["model"] = joblib.load(MODEL_PATH)
-    _state["scaler"] = joblib.load(SCALER_PATH)
+    _predictor.load()
     yield
-    _state.clear()
 
 
 app = FastAPI(title="Cardiac Risk Prediction API", lifespan=lifespan)
@@ -45,15 +45,4 @@ def health():
 
 @app.post("/predict", response_model=PredictionOutput)
 def predict(patient: PatientInput):
-    from model import predict as _predict
-
-    prob = _predict(patient.model_dump(), _state["model"], _state["scaler"])
-
-    if prob < 0.15:
-        level = "low"
-    elif prob < 0.40:
-        level = "moderate"
-    else:
-        level = "high"
-
-    return PredictionOutput(risk_probability=round(prob, 4), risk_level=level)
+    return _predictor.predict_patient(patient.model_dump())
