@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Longevity Command — Visual Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0f2e;
+    --midnight: #0d1340;
+    --royal: #1a2680;
+    --electric: #2d4aff;
+    --cyan: #00c8ff;
+    --pulse: #00ffe0;
+    --warn: #ff6b35;
+    --gold: #ffc444;
+    --white: #ffffff;
+    --gray-light: #f4f6fb;
+    --gray-mid: #8892b0;
+    --text: #ccd6f6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(135deg, #0a0f2e 0%, #0d1b4a 50%, #0a2060 100%);
+    padding: 100px 80px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(45,74,255,0.25) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,200,255,0.08);
+    top: -200px; left: 50%; transform: translateX(-50%);
+  }
+  .hero-eyebrow {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: var(--white);
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .hero h1 span { color: var(--cyan); }
+  .hero-tagline {
+    font-size: 22px;
+    font-weight: 300;
+    color: rgba(204,214,246,0.75);
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat .num {
+    font-family: 'Syne', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--gold);
+    display: block;
+  }
+  .hero-stat .lbl {
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+  }
+  .divider {
+    width: 1px;
+    background: rgba(255,255,255,0.1);
+    align-self: stretch;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section {
+    padding: 80px 80px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(0,200,255,0.2);
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 48px;
+    max-width: 700px;
+  }
+
+  /* ─── JOURNEY FLOW ─── */
+  .journey-flow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .journey-flow::before {
+    content: '';
+    position: absolute;
+    top: 52px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--electric), var(--cyan), var(--pulse));
+  }
+  .journey-step {
+    text-align: center;
+    padding: 0 16px;
+    position: relative;
+  }
+  .step-num {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--electric), var(--cyan));
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(45,74,255,0.5);
+  }
+  .journey-step:nth-child(odd) .step-num {
+    background: linear-gradient(135deg, var(--cyan), var(--pulse));
+    box-shadow: 0 0 20px rgba(0,200,255,0.4);
+  }
+  .step-icon { font-size: 28px; margin-bottom: 12px; }
+  .step-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .step-desc {
+    font-size: 13px;
+    color: var(--gray-mid);
+    line-height: 1.5;
+  }
+  .journey-row2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 48px;
+    position: relative;
+  }
+  .journey-row2::before {
+    content: '';
+    position: absolute;
+    top: 52px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--warn), var(--gold), var(--pulse));
+  }
+
+  /* ─── DATA FLOW ─── */
+  .data-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 40px;
+  }
+  .data-node {
+    background: rgba(45,74,255,0.12);
+    border: 1px solid rgba(45,74,255,0.3);
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .data-node.highlight {
+    background: rgba(0,200,255,0.1);
+    border-color: rgba(0,200,255,0.4);
+  }
+  .data-node .icon { font-size: 32px; margin-bottom: 10px; }
+  .data-node .name {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .data-node .desc { font-size: 12px; color: var(--gray-mid); line-height: 1.4; }
+  .arrow {
+    font-size: 24px;
+    color: var(--cyan);
+    text-align: center;
+    opacity: 0.6;
+  }
+
+  /* ─── STAKEHOLDER CARDS ─── */
+  .stakeholder-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .stakeholder-card {
+    border-radius: 16px;
+    padding: 32px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stakeholder-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    background: var(--card-bg);
+  }
+  .sc-member { --card-bg: var(--electric); background: rgba(45,74,255,0.15); border: 1px solid rgba(45,74,255,0.35); }
+  .sc-employer { --card-bg: var(--cyan); background: rgba(0,200,255,0.1); border: 1px solid rgba(0,200,255,0.3); }
+  .sc-pharma { --card-bg: var(--gold); background: rgba(255,196,68,0.1); border: 1px solid rgba(255,196,68,0.3); }
+  .sc-lc { --card-bg: var(--pulse); background: rgba(0,255,224,0.08); border: 1px solid rgba(0,255,224,0.25); }
+  .sc-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sc-row { margin-bottom: 14px; }
+  .sc-row .lbl {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 4px;
+  }
+  .sc-row .val {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* ─── CREDIT SYSTEM ─── */
+  .credit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .credit-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 32px 28px;
+  }
+  .credit-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .credit-card p { font-size: 14px; color: var(--gray-mid); line-height: 1.7; }
+  .credit-formula {
+    background: rgba(0,200,255,0.06);
+    border: 1px solid rgba(0,200,255,0.2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--cyan);
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* ─── JOURNEY TIMELINE TABLE ─── */
+  .timeline-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+  }
+  .timeline-table th {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    padding: 0 24px 16px;
+    text-align: left;
+  }
+  .timeline-table th:first-child { color: var(--cyan); }
+  .timeline-table td {
+    padding: 20px 24px;
+    font-size: 14px;
+    color: var(--text);
+    background: rgba(255,255,255,0.03);
+  }
+  .timeline-table td:first-child {
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    border-radius: 10px 0 0 10px;
+    border-left: 3px solid var(--electric);
+  }
+  .timeline-table td:last-child { border-radius: 0 10px 10px 0; }
+  .timeline-table tr:nth-child(3) td { border-color: var(--pulse); }
+  .highlight-val { color: var(--gold); font-weight: 600; }
+
+  /* ─── REVENUE ─── */
+  .revenue-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .rev-bars { }
+  .rev-bar-row {
+    margin-bottom: 28px;
+  }
+  .rev-bar-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    align-items: baseline;
+  }
+  .rev-bar-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .rev-bar-amount { font-size: 20px; font-weight: 700; color: var(--gold); }
+  .rev-bar-track {
+    height: 14px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 7px;
+    overflow: hidden;
+  }
+  .rev-bar-fill {
+    height: 100%;
+    border-radius: 7px;
+    transition: width 0.3s;
+  }
+  .bar-blue { background: linear-gradient(90deg, var(--electric), var(--cyan)); }
+  .bar-gold { background: linear-gradient(90deg, #ff9a00, var(--gold)); }
+  .bar-teal { background: linear-gradient(90deg, var(--cyan), var(--pulse)); }
+  .rev-sub { font-size: 12px; color: var(--gray-mid); margin-top: 4px; }
+
+  .rev-total {
+    background: linear-gradient(135deg, rgba(45,74,255,0.2), rgba(0,200,255,0.1));
+    border: 1px solid rgba(45,74,255,0.4);
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+  }
+  .rev-total-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 8px;
+  }
+  .rev-total-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .rev-total-year {
+    font-size: 14px;
+    color: var(--cyan);
+    margin-bottom: 24px;
+  }
+  .rev-note {
+    font-size: 13px;
+    color: var(--gray-mid);
+    line-height: 1.6;
+  }
+
+  /* ─── COMPETITIVE ─── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .comp-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 28px 24px;
+  }
+  .comp-card .who {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--warn);
+    margin-bottom: 8px;
+  }
+  .comp-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .comp-card p { font-size: 13px; color: var(--gray-mid); line-height: 1.6; }
+  .comp-insight {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: rgba(0,255,224,0.05);
+    border-left: 3px solid var(--pulse);
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: var(--pulse);
+    font-style: italic;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline-path {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    position: relative;
+    padding: 20px 0;
+  }
+  .timeline-path::before {
+    content: '';
+    position: absolute;
+    top: 56px;
+    left: 30px;
+    right: 30px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--electric), var(--cyan), var(--pulse), var(--gold));
+  }
+  .tl-item {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding: 0 10px;
+  }
+  .tl-dot {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--electric);
+    border: 3px solid var(--navy);
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 16px rgba(45,74,255,0.6);
+  }
+  .tl-item:nth-child(3) .tl-dot,
+  .tl-item:nth-child(4) .tl-dot { background: var(--cyan); box-shadow: 0 0 16px rgba(0,200,255,0.6); }
+  .tl-item:last-child .tl-dot { background: var(--gold); box-shadow: 0 0 16px rgba(255,196,68,0.6); width: 32px; height: 32px; margin-top: -4px; }
+  .tl-period {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--cyan);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .tl-milestone {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .tl-detail { font-size: 12px; color: var(--gray-mid); line-height: 1.5; }
+
+  /* ─── FOOTER ─── */
+  .footer-cta {
+    background: linear-gradient(135deg, rgba(45,74,255,0.3), rgba(0,200,255,0.15));
+    border-top: 1px solid rgba(45,74,255,0.4);
+    padding: 80px 80px;
+    text-align: center;
+  }
+  .footer-cta h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+  .footer-cta h2 em { color: var(--cyan); font-style: normal; }
+  .footer-cta p {
+    font-size: 18px;
+    color: rgba(204,214,246,0.75);
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .footer-bold {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: -0.5px;
+  }
+  .url-badge {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 12px 32px;
+    border: 1px solid rgba(0,200,255,0.4);
+    border-radius: 50px;
+    font-size: 14px;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Syne', sans-serif;
+  }
+
+  @media (max-width: 1000px) {
+    .section { padding: 60px 40px; }
+    .hero { padding: 80px 40px 60px; }
+    .journey-flow, .journey-row2 { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .journey-flow::before, .journey-row2::before { display: none; }
+    .stakeholder-grid { grid-template-columns: repeat(2, 1fr); }
+    .comp-grid { grid-template-columns: 1fr; }
+    .credit-grid { grid-template-columns: 1fr; }
+    .revenue-grid { grid-template-columns: 1fr; }
+    .data-flow { grid-template-columns: 1fr; }
+    .arrow { transform: rotate(90deg); }
+    .hero-stats { gap: 30px; }
+    .footer-cta { padding: 60px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Longevity Command · Product & Service Visual Roadmap</div>
+  <h1>Protecting Those Who<br><span>Protect Us</span></h1>
+  <p class="hero-tagline">The first cardiac risk intelligence platform built for first responders</p>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="num">3M+</span>
+      <span class="lbl">First Responders at Risk</span>
+    </div>
+    <div class="divider"></div>
+    <div class="hero-stat">
+      <span class="num">$5B</span>
+      <span class="lbl">Market Opportunity</span>
+    </div>
+    <div class="divider"></div>
+    <div class="hero-stat">
+      <span class="num">3×</span>
+      <span class="lbl">Higher Cardiac Risk vs. General Population</span>
+    </div>
+    <div class="divider"></div>
+    <div class="hero-stat">
+      <span class="num">$600M</span>
+      <span class="lbl">Year 5 Revenue Target</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: MEMBER JOURNEY -->
+<div class="section">
+  <div class="section-label">Section 01</div>
+  <div class="section-title">The Member Journey — 8 Steps to Protection & Rewards</div>
+
+  <div class="journey-flow">
+    <div class="journey-step">
+      <div class="step-num">1</div>
+      <div class="step-icon">📋</div>
+      <div class="step-name">Enroll</div>
+      <div class="step-desc">First responder or employer signs up. Union or department endorsement. Simple onboarding in minutes.</div>
+    </div>
+    <div class="journey-step">
+      <div class="step-num">2</div>
+      <div class="step-icon">⌚</div>
+      <div class="step-name">Connect Device</div>
+      <div class="step-desc">Member pairs a wearable (Apple Watch, Garmin, AVIVE AED device). Cardiac baseline established in 30 days.</div>
+    </div>
+    <div class="journey-step">
+      <div class="step-num">3</div>
+      <div class="step-icon">📡</div>
+      <div class="step-name">Continuous Monitoring</div>
+      <div class="step-desc">AI platform ingests ECG, HRV, cortisol proxies, sleep, and stress data 24/7 through secure Zero-Knowledge layer.</div>
+    </div>
+    <div class="journey-step">
+      <div class="step-num">4</div>
+      <div class="step-icon">🔔</div>
+      <div class="step-name">Early Alert</div>
+      <div class="step-desc">Predictive models detect risk 30–90 days before a cardiac event. Member and designated clinician notified immediately.</div>
+    </div>
+  </div>
+
+  <div class="journey-row2">
+    <div class="journey-step">
+      <div class="step-num">5</div>
+      <div class="step-icon">🏥</div>
+      <div class="step-name">Intervention</div>
+      <div class="step-desc">Coordinated care pathway: telehealth, specialist referral, medication management. Insureds who follow care plans get premium credits.</div>
+    </div>
+    <div class="journey-step">
+      <div class="step-num">6</div>
+      <div class="step-icon">💰</div>
+      <div class="step-name">Earn Credits</div>
+      <div class="step-desc">30% of anonymized data licensing revenue flows back to members as Longevity Credits — the longer they stay, the more they earn.</div>
+    </div>
+    <div class="journey-step">
+      <div class="step-num">7</div>
+      <div class="step-icon">🎯</div>
+      <div class="step-name">Redeem Credits</div>
+      <div class="step-desc">Credits applied to: premium reduction (up to 80%), HSA contribution, or cash payout. Member chooses each enrollment year.</div>
+    </div>
+    <div class="journey-step">
+      <div class="step-num">8</div>
+      <div class="step-icon">♾️</div>
+      <div class="step-name">Loyalty Loop</div>
+      <div class="step-desc">10-year loyalty multiplier (1.5×). At Year 20, the average member receives MORE in credits than they pay in premiums.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: DATA FLOW -->
+<div class="section">
+  <div class="section-label">Section 02</div>
+  <div class="section-title">Data Flow & AI Engine</div>
+
+  <div class="data-flow">
+    <div class="data-node">
+      <div class="icon">⌚</div>
+      <div class="name">Wearable / Device</div>
+      <div class="desc">ECG, HRV, SpO2, sleep, stress, activity — continuous stream</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="data-node highlight">
+      <div class="icon">🔒</div>
+      <div class="name">Privacy Layer</div>
+      <div class="desc">Zero-Knowledge Proofs. Member data anonymized before any downstream use.</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="data-node">
+      <div class="icon">🤖</div>
+      <div class="name">AI Engine</div>
+      <div class="desc">Cardiac risk models trained on 3M+ first responder profiles. Real-time scoring.</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="data-node highlight">
+      <div class="icon">🏦</div>
+      <div class="name">Pharma Marketplace</div>
+      <div class="desc">De-identified cohort data licensed to pharma/research partners. Ethical extraction solved.</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+    <div class="credit-card">
+      <h4>🚨 Alert Workflow</h4>
+      <p>Risk score crosses threshold → Member notified via app → Care coordinator activated → Physician loop-in within 2 hrs. HIPAA-compliant throughout.</p>
+    </div>
+    <div class="credit-card">
+      <h4>📊 Model Performance</h4>
+      <p>Predictive models validated against cardiac event outcomes. Target: 85%+ sensitivity at 30-day early warning window. Continuous retraining from consented data.</p>
+    </div>
+    <div class="credit-card">
+      <h4>🏛️ Regulatory Posture</h4>
+      <p>HIPAA-compliant infrastructure. State DOI licensing per market. EEOC-compliant data usage policies. De-identification meets NIST 800-188 standards.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: STAKEHOLDER ECOSYSTEM -->
+<div class="section">
+  <div class="section-label">Section 03</div>
+  <div class="section-title">Stakeholder Ecosystem — Who Wins & How</div>
+
+  <div class="stakeholder-grid">
+    <div class="stakeholder-card sc-member">
+      <div class="sc-title">🧑‍🚒 First Responder</div>
+      <div class="sc-row">
+        <div class="lbl">Pays</div>
+        <div class="val">Subsidized premium (~$150–200/mo). Data contribution via wearable.</div>
+      </div>
+      <div class="sc-row">
+        <div class="lbl">Receives</div>
+        <div class="val">Best-in-class cardiac coverage + AI monitoring + Longevity Credits that offset or exceed premium at Year 20+.</div>
+      </div>
+      <div class="sc-row">
+        <div class="lbl">Achieves</div>
+        <div class="val">Lower cardiac event risk. Financial reward for living healthy. Lifetime data ownership.</div>
+      </div>
+    </div>
+
+    <div class="stakeholder-card sc-employer">
+      <div class="sc-title">🏛️ Employer / Union</div>
+      <div class="sc-row">
+        <div class="lbl">Pays</div>
+        <div class="val">Group premium contribution. Minimal admin overhead via HRIS integration.</div>
+      </div>
+      <div class="sc-row">
+        <div class="lbl">Receives</div>
+        <div class="val">Lower workers' comp claims. Reduced on-duty cardiac deaths. Duty-of-care compliance. OSHA wellness credit eligibility.</div>
+      </div>
+      <div class="sc-row">
+        <div class="lbl">Achieves</div>
+        <div class="val">Workforce health ROI. Recruitment and retention differentiator. Municipal budget predictability.</div>
+      </div>
+    </div>
+
+    <div class="stakeholder-card sc-pharma">
+      <div class="sc-title">🧬 Pharma / Research</div>
+      <div class="sc-row">
+        <div class="lbl">Pays</div>
+        <div class="val">Data licensing fees ($50K–$5M per cohort study). Subscription API access.</div>
+      </div>
+      <div class="sc-row">
+        <div class="lbl">Receives</div>
+        <div class="val">Longitudinal cardiac data from high-risk, high-stress occupation cohort. Impossible to replicate elsewhere.</div>
+      </div>
+      <div class="sc-row">
+        <div class="lbl">Achieves</div>
+        <div class="val">Clinical trial acceleration. Drug efficacy validation. Regulatory submission support data.</div>
+      </div>
+    </div>
+
+    <div class="stakeholder-card sc-lc">
+      <div class="sc-title">⚡ Longevity Command</div>
+      <div class="sc-row">
+        <div class="lbl">Revenue Streams</div>
+        <div class="val">Insurance premiums (net underwriting margin) + pharma data licensing (70% of gross) + predictive analytics SaaS.</div>
+      </div>
+      <div class="sc-row">
+        <div class="lbl">Moat</div>
+        <div class="val">Data network effects. Union distribution lock-in. Proprietary first responder cardiac risk model. Loyalty credits create switching costs.</div>
+      </div>
+      <div class="sc-row">
+        <div class="lbl">Exit Path</div>
+        <div class="val">$5B–$15B strategic acquisition by insurance carrier, pharma platform, or health AI company at Year 5.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: CREDIT MECHANICS -->
+<div class="section">
+  <div class="section-label">Section 04</div>
+  <div class="section-title">Longevity Credit System — The Ethical Data Exchange</div>
+
+  <div class="credit-grid">
+    <div class="credit-card">
+      <h4>📥 How Credits Accrue</h4>
+      <p>Every dollar of pharma data licensing revenue attributable to a member's anonymized data contribution generates credits. 30% of gross pharma revenue is pooled and distributed proportionally to the contributing members.</p>
+      <div class="credit-formula">
+        Monthly Credit = (Member Data Value / Total Pool Value) × 30% Pharma Revenue
+      </div>
+    </div>
+
+    <div class="credit-card">
+      <h4>📊 Example at Scale (Year 3)</h4>
+      <p>At 75,000 members with $150M in pharma licensing revenue:</p>
+      <div class="credit-formula">$150M × 30% = $45M / 75,000 members = ~$600/member/yr</div>
+      <p style="margin-top: 16px;">Loyalty multiplier (10-yr): 1.5× → <strong style="color: var(--gold);">$900/yr</strong> back to long-tenured members. Average annual premium: ~$2,400. Net member cost after credits: $1,500.</p>
+    </div>
+
+    <div class="credit-card">
+      <h4>💳 3 Redemption Options</h4>
+      <p><strong style="color: var(--cyan);">Option A — Premium Reduction</strong><br>Apply credits to reduce next year's premium. Up to 80% reduction cap. Most popular election.</p>
+      <p style="margin-top: 12px;"><strong style="color: var(--gold);">Option B — HSA Contribution</strong><br>Direct deposit to member's Health Savings Account. Tax-advantaged. Capped at IRS HSA limit.</p>
+      <p style="margin-top: 12px;"><strong style="color: var(--pulse);">Option C — Cash Payout</strong><br>Annual check or direct deposit. Taxable income. No cap. Preferred by retirees and near-retirement members.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: MEMBER JOURNEY OVER TIME -->
+<div class="section">
+  <div class="section-label">Section 05</div>
+  <div class="section-title">Member Value Over Time — Loyalty Compounds</div>
+
+  <table class="timeline-table">
+    <thead>
+      <tr>
+        <th>Member Stage</th>
+        <th>Annual Premium</th>
+        <th>Est. Credits Earned</th>
+        <th>Net Member Cost</th>
+        <th>Cumulative Health Benefit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Year 1 — New Member</td>
+        <td>$2,400</td>
+        <td>$200</td>
+        <td class="highlight-val">$2,200</td>
+        <td>Baseline cardiac profile established. Monitoring active.</td>
+      </tr>
+      <tr>
+        <td>Year 3 — Established</td>
+        <td>$2,400</td>
+        <td>$600</td>
+        <td class="highlight-val">$1,800</td>
+        <td>1 early alert likely detected. Pharma data value rising.</td>
+      </tr>
+      <tr>
+        <td>Year 10 — Loyal Member</td>
+        <td>$2,400</td>
+        <td>$1,200 (1.5× multiplier)</td>
+        <td class="highlight-val">$1,200</td>
+        <td>2–3 interventions. Cumulative credits: ~$8,000+. Strong loyalty lock-in.</td>
+      </tr>
+      <tr>
+        <td>Year 20 — Lifetime Member</td>
+        <td>$2,400</td>
+        <td>$2,800+</td>
+        <td class="highlight-val" style="color: var(--pulse);">MEMBER NET POSITIVE</td>
+        <td>Lifetime data value exceeds premiums paid. Net recipient of the platform.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 6: REVENUE -->
+<div class="section">
+  <div class="section-label">Section 06</div>
+  <div class="section-title">Revenue Architecture — Year 3 at Scale</div>
+
+  <div class="revenue-grid">
+    <div class="rev-bars">
+      <div class="rev-bar-row">
+        <div class="rev-bar-header">
+          <span class="rev-bar-label">🏥 Insurance Premiums</span>
+          <span class="rev-bar-amount">$135M gross</span>
+        </div>
+        <div class="rev-bar-track"><div class="rev-bar-fill bar-blue" style="width: 90%;"></div></div>
+        <div class="rev-sub">Net underwriting margin: ~$54M after claims and reinsurance. 75,000 members × ~$1,800/yr net premium.</div>
+      </div>
+
+      <div class="rev-bar-row">
+        <div class="rev-bar-header">
+          <span class="rev-bar-label">🧬 Pharma Data Licensing</span>
+          <span class="rev-bar-amount">$150M gross</span>
+        </div>
+        <div class="rev-bar-track"><div class="rev-bar-fill bar-gold" style="width: 100%;"></div></div>
+        <div class="rev-sub">$108M to Longevity Command (72%) after member credit distributions ($42M back to members).</div>
+      </div>
+
+      <div class="rev-bar-row">
+        <div class="rev-bar-header">
+          <span class="rev-bar-label">📊 Predictive Analytics SaaS</span>
+          <span class="rev-bar-amount">$52.5M</span>
+        </div>
+        <div class="rev-bar-track"><div class="rev-bar-fill bar-teal" style="width: 35%;"></div></div>
+        <div class="rev-sub">B2B API access for municipalities, workers' comp carriers, and clinical trial sponsors. High-margin recurring revenue.</div>
+      </div>
+    </div>
+
+    <div class="rev-total">
+      <div class="rev-total-label">Total Revenue</div>
+      <div class="rev-total-num">$215–280M</div>
+      <div class="rev-total-year">Year 3 · 75,000 Members</div>
+      <div class="rev-note">Three independent revenue streams create resilience. Insurance subsidizes member acquisition. Data becomes the primary margin driver as scale increases.</div>
+      <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div class="rev-total-label">Year 5 Projection</div>
+        <div style="font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--pulse);">$425–600M</div>
+        <div class="rev-note" style="margin-top: 8px;">150,000 members. 5–10 pharma partners. $5B–$15B exit window opens.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: COMPETITIVE DIFFERENTIATION -->
+<div class="section">
+  <div class="section-label">Section 07</div>
+  <div class="section-title">Competitive Moat — What We Understand That Others Don't</div>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="who">vs. Traditional Life / AD&D Insurers</div>
+      <h4>They see first responders as high-risk liabilities</h4>
+      <p>Incumbents price first responders out of the market or exclude cardiac from occupational coverage. They have no data intelligence layer — just actuarial tables.</p>
+      <div class="comp-insight">We use AI to predict and prevent the cardiac events that make this population "uninsurable" — turning the risk premium into an opportunity.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="who">vs. Wearable / Digital Health Companies</div>
+      <h4>They collect data but can't monetize it ethically</h4>
+      <p>Apple Health, Garmin, Whoop — they have device data but no distribution into first responder benefits. They also have no ethical monetization mechanism that returns value to the data contributor.</p>
+      <div class="comp-insight">We've solved the ethical data extraction problem. The credit system transforms surveillance into a cooperative economic model.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="who">vs. Pharma / Clinical Research Platforms</div>
+      <h4>They can't access first responder cardiac data at scale</h4>
+      <p>Pharma needs longitudinal data from high-stress, high-cardiac-risk occupational cohorts. This doesn't exist anywhere. IRB recruiting for this population takes years and millions.</p>
+      <div class="comp-insight">We're building the only consented, longitudinal first responder cardiac data asset in existence. By Year 3, it's irreplaceable.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="who">vs. General Health Insurance Platforms</div>
+      <h4>They have no occupational intelligence</h4>
+      <p>Oscar, Collective Health, etc. are optimizing for general population health management. None have built for the unique physiology, psychology, and occupational hazards of first responders.</p>
+      <div class="comp-insight">Our domain expertise and union distribution are 5-year moats that generalist platforms cannot replicate without our data.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="who">vs. Workers' Comp Carriers</div>
+      <h4>They respond to events; we prevent them</h4>
+      <p>Workers' comp is reactive — claims management after injury or death. There is no prevention layer, no predictive intelligence, and no financial incentive to keep workers healthy before an event.</p>
+      <div class="comp-insight">We're building the prevention layer that reduces workers' comp claims — making us a natural partner or acquisition target for these carriers.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="who">vs. AI Health Startups</div>
+      <h4>They lack the insurance distribution wedge</h4>
+      <p>Most AI health startups are selling SaaS to hospital systems. They face long sales cycles and have no recurring revenue flywheel. Without an insurance product, they can't capture the full value chain.</p>
+      <div class="comp-insight">Insurance is our distribution weapon. Every enrolled member is a captive, long-term data contributor. SaaS startups have no equivalent lock-in mechanism.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 8: TIMELINE -->
+<div class="section">
+  <div class="section-label">Section 08</div>
+  <div class="section-title">Execution Timeline — From Pilot to Platform</div>
+
+  <div class="timeline-path">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Month 1–3</div>
+      <div class="tl-milestone">Seed & Structure</div>
+      <div class="tl-detail">Raise seed round. Establish insurance entity. Sign first union MOU. Hire medical director.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Month 3–6</div>
+      <div class="tl-milestone">Pilot Launch</div>
+      <div class="tl-detail">500-member pilot with 1–2 fire/EMS departments. AVIVE AED wearable integration live. Baseline cardiac data collection begins.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Month 6–12</div>
+      <div class="tl-milestone">Proof of Model</div>
+      <div class="tl-detail">First pharma data licensing conversation. 2–3 early cardiac alerts validated clinically. Credit system operational. Series A prep.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Year 2–3</div>
+      <div class="tl-milestone">75,000 Members</div>
+      <div class="tl-detail">National union partnerships. 5+ pharma partners. $215M–$280M revenue. Multi-state insurance licensure complete.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">Year 5</div>
+      <div class="tl-milestone">150,000 Members</div>
+      <div class="tl-detail">$425M–$600M revenue. 10+ pharma partners. $5B–$15B exit window. Strategic acquirer discussions underway.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 9: PRE-SEED RAISE -->
+<div class="section">
+  <div class="section-label">Section 09</div>
+  <div class="section-title">Pre-Seed Raise — $750K to Prove the Model</div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+
+    <!-- LEFT: Raise Structure -->
+    <div>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 36px 32px; margin-bottom: 24px;">
+        <h3 style="font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 24px;">🏗️ Raise Structure</h3>
+
+        <div style="margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--white);">Lead Investor</span>
+            <span style="font-size: 22px; font-weight: 700; color: var(--gold);">$400K</span>
+          </div>
+          <div style="height: 10px; background: rgba(255,255,255,0.06); border-radius: 5px; overflow: hidden;">
+            <div style="width: 53%; height: 100%; background: linear-gradient(90deg, var(--electric), var(--cyan)); border-radius: 5px;"></div>
+          </div>
+          <div style="font-size: 12px; color: var(--gray-mid); margin-top: 6px;">Lead investor candidate currently being interviewed. Board observer seat offered. Strategic value required — not capital-only.</div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--white);">Angel Syndicate</span>
+            <span style="font-size: 22px; font-weight: 700; color: var(--cyan);">$350K</span>
+          </div>
+          <div style="height: 10px; background: rgba(255,255,255,0.06); border-radius: 5px; overflow: hidden;">
+            <div style="width: 47%; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--pulse)); border-radius: 5px;"></div>
+          </div>
+          <div style="font-size: 12px; color: var(--gray-mid); margin-top: 6px;">Check sizes of $25K–$100K from angels with first responder, insurtech, digital health, or union-sector networks.</div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: var(--white);">Total Pre-Seed</span>
+          <span style="font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--gold);">$750K</span>
+        </div>
+      </div>
+
+      <div style="background: rgba(0,200,255,0.06); border: 1px solid rgba(0,200,255,0.2); border-radius: 14px; padding: 28px;">
+        <h4 style="font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--cyan); margin-bottom: 12px;">🤝 Founder Context</h4>
+        <p style="font-size: 14px; color: var(--gray-mid); line-height: 1.7;">Lance Muncey is a solo founder actively searching for a technical co-founder. AI tooling is being used to automate operations, research, product development, and go-to-market — dramatically reducing the capital required to reach pilot readiness. Founder salaries are included to ensure full-time focus and attract a co-founder from day one. This raise funds the path from concept to a validated 500-member pilot, at which point a Series Seed of $2M–$5M becomes achievable.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT: Use of Funds -->
+    <div>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 36px 32px;">
+        <h3 style="font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 28px;">📊 Use of Funds — $750K</h3>
+
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+              <span style="font-size: 14px; color: var(--white); font-weight: 600;">👤 Founder Salaries (12 months)</span>
+              <span style="font-weight: 700; color: var(--gold);">$144K <span style="font-size: 12px; color: var(--gray-mid);">19%</span></span>
+            </div>
+            <div style="height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden;">
+              <div style="width: 19%; height: 100%; background: linear-gradient(90deg, var(--gold), #ffdd88);"></div>
+            </div>
+            <div style="font-size: 12px; color: var(--gray-mid); margin-top: 5px;">CEO (Lance): $8K/mo · Co-founder (TBD): $4K/mo. Below-market compensation reflects equity upside. Full-time focus from day one — no divided attention.</div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+              <span style="font-size: 14px; color: var(--white); font-weight: 600;">⚖️ Legal, Licensing & Compliance</span>
+              <span style="font-weight: 700; color: var(--gold);">$150K <span style="font-size: 12px; color: var(--gray-mid);">20%</span></span>
+            </div>
+            <div style="height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden;">
+              <div style="width: 20%; height: 100%; background: linear-gradient(90deg, #ff9a00, var(--gold));"></div>
+            </div>
+            <div style="font-size: 12px; color: var(--gray-mid); margin-top: 5px;">Entity formation, MGA/MTA legal structure, state DOI insurance licensing (TX, CA, FL initial markets), HIPAA compliance counsel, and IP protection.</div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+              <span style="font-size: 14px; color: var(--white); font-weight: 600;">🛠️ Product & Tech MVP</span>
+              <span style="font-weight: 700; color: var(--gold);">$140K <span style="font-size: 12px; color: var(--gray-mid);">19%</span></span>
+            </div>
+            <div style="height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden;">
+              <div style="width: 19%; height: 100%; background: linear-gradient(90deg, var(--electric), var(--cyan));"></div>
+            </div>
+            <div style="font-size: 12px; color: var(--gray-mid); margin-top: 5px;">Member portal, wearable API integrations (Apple Health, Garmin, AVIVE), AI risk scoring model v1, and secure data pipeline. AI-assisted development reduces burn significantly.</div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+              <span style="font-size: 14px; color: var(--white); font-weight: 600;">🧑‍⚕️ Clinical & Medical Advisory</span>
+              <span style="font-weight: 700; color: var(--gold);">$90K <span style="font-size: 12px; color: var(--gray-mid);">12%</span></span>
+            </div>
+            <div style="height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden;">
+              <div style="width: 12%; height: 100%; background: linear-gradient(90deg, var(--pulse), #00ccaa);"></div>
+            </div>
+            <div style="font-size: 12px; color: var(--gray-mid); margin-top: 5px;">Part-time Medical Director (cardiologist), occupational health advisor, and clinical protocol development for the 500-member pilot alert/intervention workflow.</div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+              <span style="font-size: 14px; color: var(--white); font-weight: 600;">🤝 Pilot Acquisition & Union Relations</span>
+              <span style="font-weight: 700; color: var(--gold);">$80K <span style="font-size: 12px; color: var(--gray-mid);">11%</span></span>
+            </div>
+            <div style="height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden;">
+              <div style="width: 11%; height: 100%; background: linear-gradient(90deg, #a78bfa, var(--electric));"></div>
+            </div>
+            <div style="font-size: 12px; color: var(--gray-mid); margin-top: 5px;">Travel, conference presence (IAFF, NAEMS, IFEBP), union MOU outreach, and co-founder recruitment (technical partner, insurance ops).</div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+              <span style="font-size: 14px; color: var(--white); font-weight: 600;">🏥 Reinsurance & Actuarial</span>
+              <span style="font-weight: 700; color: var(--gold);">$70K <span style="font-size: 12px; color: var(--gray-mid);">9%</span></span>
+            </div>
+            <div style="height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden;">
+              <div style="width: 9%; height: 100%; background: linear-gradient(90deg, var(--warn), #ff9966);"></div>
+            </div>
+            <div style="font-size: 12px; color: var(--gray-mid); margin-top: 5px;">Actuarial consultant for first responder cardiac risk pricing, reinsurance partner negotiations, and initial product rate filings with state DOIs.</div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+              <span style="font-size: 14px; color: var(--white); font-weight: 600;">⚙️ Operations & AI Tooling</span>
+              <span style="font-weight: 700; color: var(--gold);">$40K <span style="font-size: 12px; color: var(--gray-mid);">5%</span></span>
+            </div>
+            <div style="height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden;">
+              <div style="width: 5%; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--pulse));"></div>
+            </div>
+            <div style="font-size: 12px; color: var(--gray-mid); margin-top: 5px;">AI subscriptions (Claude, Cursor, Perplexity, etc.), CRM, cloud infrastructure, pitch deck tooling, and contractor support for AI-augmented startup ops.</div>
+          </div>
+
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+              <span style="font-size: 14px; color: var(--white); font-weight: 600;">🔒 Working Capital Reserve</span>
+              <span style="font-weight: 700; color: var(--gold);">$36K <span style="font-size: 12px; color: var(--gray-mid);">5%</span></span>
+            </div>
+            <div style="height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden;">
+              <div style="width: 5%; height: 100%; background: rgba(255,255,255,0.3);"></div>
+            </div>
+            <div style="font-size: 12px; color: var(--gray-mid); margin-top: 5px;">Buffer for unexpected regulatory, legal, or pilot costs. Ensures 12-month runway to Series Seed readiness with no cash-out risk.</div>
+          </div>
+
+        </div>
+
+        <div style="margin-top: 28px; background: rgba(0,255,224,0.05); border-radius: 10px; padding: 18px 20px;">
+          <div style="font-family: 'Syne', sans-serif; font-size: 13px; color: var(--pulse); font-weight: 700; margin-bottom: 6px;">🎯 Milestone This Capital Buys</div>
+          <div style="font-size: 13px; color: var(--gray-mid); line-height: 1.6;">500-member validated pilot · 1st pharma data conversation · State DOI approval in 1–2 markets · Co-founder onboarded · Series Seed-ready by Month 12</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-cta">
+  <h2>This Isn't Incremental Innovation.<br><em>This Is a Paradigm Shift.</em></h2>
+  <p>We're building the first cardiac risk intelligence platform where first responders get affordable insurance, AI-powered heart attack prevention, and direct financial compensation for their data. We've solved the ethical extraction problem. We've designed superior unit economics. We're addressing the #1 killer in America — starting with the people who risk their lives to save ours.</p>
+  <div class="footer-bold">Longevity Command · longevitycommand.com</div>
+  <div class="url-badge">contact@longevitycommand.com</div>
+</div>
+
+</body>
+</html>
